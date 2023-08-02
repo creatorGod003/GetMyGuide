@@ -186,7 +186,7 @@ const FindMyGuide = () => {
           </div>
         </div>
       </div>
-      (searchPackages.length !== 0) && (
+      {/* (searchPackages.length !== 0) && (
       <section className="lg:mx-20 md:mx-10 my-5 text-md md:text-lg lg:text-xl flex flex-col">
         <header className="font-semibold text-left my-5 text-xl md:text-2xl lg:text-3xl">
           <span className="font-navbar">Most Loved Destination</span>
@@ -219,7 +219,7 @@ const FindMyGuide = () => {
           }
 
         </Swiper>
-      </section>
+      </section> */}
       
 
 
