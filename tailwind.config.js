@@ -6,6 +6,10 @@ export default {
   ],
   theme: {
     extend: {},
+    fontFamily: {
+      'navbar':['Montserrat', 'sans-serif'],
+      'cursiveheader':['Playfair Display', 'serif'],
+    }
   },
   plugins: [],
 }

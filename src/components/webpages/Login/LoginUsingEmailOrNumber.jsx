@@ -1,0 +1,191 @@
+
+import { Link, useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { useState } from "react";
+
+import { BeatLoader } from "react-spinners";
+
+const LoginUsingEmailOrNumber = () => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [requireEmail, setRequireEmail] = useState(false);
+  const [requirePassword, setRequirePassword] = useState(false);
+  const [invalidDetails, setInvalidDetails] = useState(false);
+  // const globalAuth = useAuth();
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const [onLoading, setOnLoading] = useState(false);
+
+  function resetFields() {
+    setEmail("");
+    setPassword("");
+    setRequireOff();
+  }
+
+  async function handleSignIn(e) {
+    const db={};
+    e.preventDefault();
+
+    if (email === "") {
+      setRequireEmail(true);
+    }
+    if (password === "") {
+      setRequirePassword(true);
+    }
+
+    if (email === "" || password === "") {
+      return;
+    }
+    
+    const emailRegex =
+      /^[a-zA-Z0-9]+(?:\.[a-zA-Z0-9]+)*@[a-zA-Z0-9]+(?:\.[a-zA-Z0-9]+)*$/gm;
+    const numberRegex = /^[+0-9]+$/;
+    let credential = "";
+
+    const doc=()=>{}
+    const getDoc = ()=>{}
+    
+    if (email.match(emailRegex) == null && email.match(numberRegex) !== null) {
+      const docRef = doc(db, "email_number_mapping", email);
+      const docSnap = await getDoc(docRef);
+      if (docSnap.exists()) {
+        console.log("Document found");
+        credential = docSnap.data().email;
+      } else {
+        console.log("No such document exist!");
+        setInvalidDetails(true);
+        return;
+      }
+    } else if (email.match(emailRegex) !== null) {
+      credential = email;
+    } else {
+      console.log("Invalid number or email");
+      setInvalidDetails(true);
+      return;
+    }
+
+    console.log("credential are : ", credential);
+
+    const firebaseAuth={};
+    const globalAuth={login:()=>{}};
+    const login=()=>{}
+    const signInWithEmailAndPassword=()=>{}
+
+
+    setOnLoading(true);
+    console.log("Signing in...")
+    signInWithEmailAndPassword(firebaseAuth, credential, password)
+      .then((userCredential) => {
+        const user = userCredential.user;
+        globalAuth.login(user);
+        dispatch(login(JSON.stringify(user)));
+        resetFields();
+        setOnLoading(false);
+        navigate("/home");
+
+      })
+      .catch((error) => {
+        setInvalidDetails(true);
+        alert(error.message);
+        setOnLoading(false);
+      });
+
+
+  }
+
+  function setRequireOff() {
+    setRequireEmail(false);
+    setRequirePassword(false);
+  }
+
+  return (
+    <div className="min-h-screen bg-gradient-to-b to-teal-300 from-indigo-500 flex flex-col justify-center items-center">
+      <div className="flex flex-col w-[70%] sm:w-[40%] md:w-[30%] lg:w-[25%] mx-auto border border-slate-800 rounded-2xl shadow-2xl p-2 bg-white">
+        <form action="" className="flex flex-col items-left">
+          <label
+            htmlFor="email_num"
+            className="flex flex-col font-bold text-slate-800"
+          >
+            <span className="m-2 ">Email or Number</span>
+            <span
+              className={`${
+                requireEmail ? "block" : "hidden"
+              } text-red-500 m-2`}
+            >
+              *Required
+            </span>
+            <input
+              autoComplete={"on"}
+              className="m-2 p-3 border border-slate-600 rounded-md bg-slate-100 placeholder-gray-600 font-normal"
+              onChange={(e) => {
+                setEmail(e.target.value);
+                setRequireOff();
+                setInvalidDetails(false);
+              }}
+              value={email}
+              name="email_num"
+              type="text"
+              placeholder="Country code + number or email"
+            />
+          </label>
+
+          <label
+            htmlFor="password"
+            className="flex flex-col font-bold text-slate-800"
+          >
+            <span className="m-2 ">Password</span>
+            <span
+              className={`${
+                requirePassword ? "block" : "hidden"
+              } text-red-500 m-2`}
+            >
+              *Required
+            </span>
+            <input
+              className="m-2 p-3 border border-slate-600 rounded-md bg-slate-100 placeholder-gray-600  font-normal"
+              onChange={(e) => {
+                setPassword(e.target.value);
+                setRequireOff();
+                setInvalidDetails(false);
+              }}
+              value={password}
+              name="password"
+              type="password"
+              placeholder="Password"
+              autoComplete="on"
+            />
+          </label>
+
+          <div className="text-left m-2">
+            <label htmlFor="" className="flex flex-row items-center ">
+              <input type="checkbox" name="" id="" />
+
+              <span className="text-slate-800 mx-2">Remember me</span>
+            </label>
+          </div>
+
+          <button
+            className="p-4 m-2 border border-slate-800 rounded bg-blue-500 text-white cursor-pointer flex justify-center items-center"
+            onClick={(e) => handleSignIn(e)}
+          >
+            {
+              onLoading ? <BeatLoader color={"white"} size={10} /> : "Sign In"
+            }
+          </button>
+
+          <div className="text-red-500 text-center m-2">
+            {invalidDetails ? "Invalid credentials" : ""}
+          </div>
+        </form>
+        <div className="mx-auto my-2 text-sm">
+          Do not have an account?{" "}
+          <Link to={"/signup"} className="underline font-bold">
+            Sign Up
+          </Link>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default LoginUsingEmailOrNumber;
