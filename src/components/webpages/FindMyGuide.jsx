@@ -19,9 +19,9 @@ import "swiper/css";
 import "swiper/css/free-mode";
 import "swiper/css/pagination";
 // import required modules
-import { FreeMode, Pagination } from "swiper/modules";
-import Swiper from "swiper";
-import { SwiperSlide } from "swiper/react";
+// import { FreeMode, Pagination } from "swiper/modules";
+// import Swiper from "swiper";
+// import { SwiperSlide } from "swiper/react";
 
 const FindMyGuide = () => {
   const [text, setText] = useState("");
@@ -55,7 +55,7 @@ const FindMyGuide = () => {
   const [latestDoc, setLatestDoc] = useState(null);
   const [lovedDestination, setLovedDestination] = useState([]);
   const updatedDestination = useRef([]);
-  const numberOfSlides = vw > 1024 ? 3.2 : vw > 768 ? 2.2 : 1.5;
+  // const numberOfSlides = vw > 1024 ? 3.2 : vw > 768 ? 2.2 : 1.5;
 
   async function getMoreDestination() {
     const destinationRef = collection(db, "loved_destination");
@@ -92,13 +92,13 @@ const FindMyGuide = () => {
   }, []);
 
   const [selectedSearchPlace, setSelectedSearchPlace] = useState("");
-  const [searchPackages, setSearchPackages] = useState([]);
+  // const [searchPackages, setSearchPackages] = useState([]);
   const tempSearchPackages = useRef([]);
 
   async function onSelectSearchResult() {
     const q = query(
-      collection(db, "tourist_packages"),
-      where("city", "==", selectedSearchPlace)
+      collection(db, "loved_destination"),
+      where("place", "==", selectedSearchPlace)
     );
     const querySnapshot = await getDocs(q);
 
@@ -106,8 +106,8 @@ const FindMyGuide = () => {
       tempSearchPackages.current.push(doc.data());
     });
 
-    const array = JSON.stringify(tempSearchPackages.current);
-    setSearchPackages(JSON.parse(array));
+    // const array = JSON.stringify(tempSearchPackages.current);
+    // setSearchPackages(JSON.parse(array));
   }
 
   return (
@@ -130,7 +130,7 @@ const FindMyGuide = () => {
               className="w-8 h-8 basis-6"
             />
             <input
-              type="text"
+              type="search"
               name="search_place"
               className="focus:outline-none flex-auto py-2 px-1 placeholder:text-center md:text-xl md:px-4"
               placeholder="Where are you going?"

@@ -8,7 +8,7 @@ const About = () => {
         <div
           className="w-full h-[80vh]"
           style={{
-            backgroundImage: "url('/src/assets/hero-img3.jpg')",
+            backgroundImage: "url('/src/assets/hero-img4.jpg')",
             backgroundSize: "cover",
             backgroundPosition: "center center",
           }}
@@ -135,7 +135,7 @@ const About = () => {
             <a href="#">
               <img
                 className="rounded-lg sm:rounded-md sm:rounded-l-lg w-[200px] h-[300px] md:w-[300px] md:h-[400px]"
-                src="/src/assets/profile.jpg"
+                src="/src/assets/creator.png"
                 alt="Jese Avatar"
               />
             </a>
@@ -145,7 +145,7 @@ const About = () => {
               </h3>
 
               <p className="mt-3 mb-4 font-light text-gray-500 dark:text-gray-400">
-                Founder and CEO
+                I am a 4th year student at ITER, SOA University.
               </p>
             </div>
           </div>

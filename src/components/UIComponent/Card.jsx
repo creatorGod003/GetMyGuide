@@ -1,31 +1,26 @@
+import { useEffect, useState } from "react";
 import Button from "./Button";
 import StarRating from "./StarRating";
-
+import { PropTypes } from "prop-types";
 const Card = (props) => {
 
-    // tourtitle
-    // tour description
-    // tour rating
-    // tour price
-    // tour image
-    // tour id
-    // key
-
-    // eslint-disable-next-line react/prop-types
     const title = props.title;
-    // eslint-disable-next-line react/prop-types
     const description = props.description;
-    // eslint-disable-next-line react/prop-types
     const rating = props.rating;
-    // eslint-disable-next-line react/prop-types
     const price = props.price;
-    // const image = props.image;
-    // const id = props.id;    
-    
+    const key = props.key;
+
+    const [moreClicked, setMoreClicked] = useState(false);
+    useEffect(()=>{
+
+      if(description.length>100)
+        setMoreClicked(true);
+      
+    },[])
 
   return (
-    // eslint-disable-next-line react/prop-types
-    <div className="max-w-sm rounded overflow-hidden shadow-lg m-4" >
+    
+    <div className="max-w-sm rounded overflow-hidden shadow-lg m-4" key={key} >
       <img 
         className="w-full h-56 hover:scale-105 transition-all duration-300"
         src={"https://tailwindcss.com/img/card-top.jpg"}
@@ -33,11 +28,32 @@ const Card = (props) => {
       />
       <div className="px-6 py-2">
         <div className="font-bold text-xl mb-2">{title}</div>
-        <p className="text-gray-700 text-base">
+        <di className="text-gray-700 text-base">
           {
-            description
+            moreClicked?
+            (
+              <div>
+                <span>{description.slice(0,100)+"   ..."}</span>
+                <button href="#" className="underline" onClick={
+                  ()=>{
+                    setMoreClicked(false);
+                  }
+                }>more</button>
+              </div>
+            ):
+            (
+              <div>
+                <span>{description}</span>
+                <button href="#" className="underline" onClick={
+                  ()=>{
+                    setMoreClicked(true);
+                  }
+                }>less</button>
+              </div>
+            )
+
           }
-        </p>
+        </di>
         <StarRating rating={rating} width={"20px"}/>
         <p>
             <span className="font-bold">Price: </span>
@@ -52,3 +68,24 @@ const Card = (props) => {
 };
 
 export default Card;
+
+Card.defaultProps = {
+  title: "Title",
+  description: "Description",
+  rating: 0,
+  price: 0,
+  key: "0",
+  // image: "",
+  // id: "",
+};
+
+
+Card.propTypes = {
+  title: PropTypes.string,
+  description: PropTypes.string,
+  rating: PropTypes.number,
+  price: PropTypes.number,
+  key: PropTypes.string,
+  // image: PropTypes.string,
+  // id: PropTypes.string,
+};

@@ -84,7 +84,7 @@ const LoginWithEmail = () => {
         return errors;
       }}
     >
-      <Form action="/action_page.php">
+      <Form className="px-6 py-4">
         <div className="flex">
           <label htmlFor="email" className="mr-3">
             Email
@@ -101,6 +101,7 @@ const LoginWithEmail = () => {
           id="email"
           name="email"
           placeholder="Enter your email"
+          className="p-2 rounded border-black border-2"
         />
         <br />
         <br />
@@ -120,6 +121,7 @@ const LoginWithEmail = () => {
           id="password"
           name="password"
           placeholder="Enter your password"
+          className="p-2 rounded border-black border-2"
         />
         <br />
         <button

@@ -1,7 +1,41 @@
 import { ErrorMessage, Field, Form, Formik } from "formik";
 import Footer from "../UIComponent/Footer";
+import { toast } from "react-toastify";
+import { db } from "../../firebase/firebase";
+import { addDoc, collection } from "firebase/firestore";
+import { useRef } from "react";
 
 const Contact = () => {
+
+  function sendToast(status) {
+    if (status === "success") {
+      toast.success("We have registered your issue!");
+    } else {
+      toast.error("Error in Registoring your issue!");
+    }
+
+  }
+
+  async function handleSubmit(values) {
+    const { email, message } = values;
+
+    try{
+      await addDoc(collection(db, "issues"),{
+        email:email,
+        message:message,
+        timestamp: new Date().toLocaleTimeString()
+      })
+      sendToast("success");
+    }
+    catch(error){
+      sendToast("error");
+    }
+    
+  }
+
+  const resetFormFunction = useRef(null);
+
+
   return (
     <>
       <section className="text-gray-600 body-font relative">
@@ -19,7 +53,7 @@ const Contact = () => {
             referrerPolicy="no-referrer-when-downgrade"
           />
         </div>
-        <div className="container px-5 py-24 mx-auto flex">
+        <div className="container px-5 py-24 mx-auto flex z-30">
           <div className="lg:w-1/3 md:w-1/2 bg-white rounded-lg p-8 flex flex-col md:ml-auto w-full mt-10 md:mt-0 relative z-10 shadow-md">
             <h2 className="text-gray-900 text-lg mb-1 font-medium title-font">
               Need Help?
@@ -38,6 +72,8 @@ const Contact = () => {
             onSubmit={
               (values)=>{
                 console.log(values)
+                handleSubmit(values);
+                resetFormFunction.current();
               }
             }
 
@@ -63,7 +99,11 @@ const Contact = () => {
             }
             
             >
-              <Form>
+              
+            {
+
+              ({resetForm})=>(
+                <Form>
                 <div className="relative mb-4">
                   <label
                     htmlFor="email"
@@ -96,13 +136,21 @@ const Contact = () => {
                     name="message"
                     placeholder="Describe your issue"
                     className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 h-32 text-base outline-none text-gray-700 py-1 px-3 resize-none leading-6 transition-colors duration-200 ease-in-out"
-                    defaultValue={""}
+                    
                   />
                 </div>
-                <button className="text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg">
+                <button type="submit" className="text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg" onClick={
+                  ()=>{
+                    resetFormFunction.current=resetForm;
+                  }
+                }>
                     Submit
                 </button>
               </Form>
+              )
+
+            }
+
             </Formik>
 
             

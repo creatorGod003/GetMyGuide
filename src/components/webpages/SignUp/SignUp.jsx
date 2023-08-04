@@ -39,11 +39,6 @@ const SignUp = () => {
     setProcessing(true);
     createUserWithEmailAndPassword(auth, values.email, values.password)
       .then(({ user }) => {
-        // Signed Up successfully
-        // user will be redirected to home page
-        // there afte he can login
-        // saving the user data in firestore
-        // assuming firestore never fails not handling errors
         sendToast("success");
         console.log("signed up successfully");
         dispatch(setSignUpPopUp(false));

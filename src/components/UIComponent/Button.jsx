@@ -1,7 +1,7 @@
-
+import { PropTypes } from 'prop-types';
 const Button = (props) => {
 
-    // eslint-disable-next-line react/prop-types
+    
     const name = props.name;
 
   return (
@@ -9,6 +9,10 @@ const Button = (props) => {
               {name}
     </button>
   )
+}
+
+Button.propTypes={
+    name:PropTypes.string
 }
 
 export default Button

@@ -13,6 +13,8 @@ import Profile from "./components/webpages/Profile/Profile";
 import ProfileEdit from "./components/webpages/Profile/ProfileEdit";
 import PackageDescription from "./components/webpages/PackageDescription";
 import Feedback from "./components/webpages/Feedback";
+import Admin from "./components/webpages/Admin";
+import Error404 from "./components/webpages/Error404";
 
 
 function App() {
@@ -23,7 +25,7 @@ function App() {
 
   return (
     <div className={`relative ${(loginPopUp || signupPopUp||feedbackPopUp)?"bg-black/30":""}`} style={(loginPopUp || signupPopUp||feedbackPopUp)?{pointerEvents:"none"}:{}}>
-      <ToastContainer className="fixed top-10 right-10" autoClose="200" pauseOnHover="false"/>
+      <ToastContainer className="fixed top-10 right-10" autoClose="400" pauseOnHover="false"/>
       <NavBar />
       <Routes>
         <Route path="/" element={<Home />} />
@@ -33,6 +35,8 @@ function App() {
         <Route path="profile" element={<Profile />} />
         <Route path="profileEdit" element={<ProfileEdit />} />
         <Route path="packageDescription" element={<PackageDescription />} />
+        <Route path="admin" element = {<Admin/>}/>
+        <Route path="*" element={<Error404 />} />  
       </Routes>
 
       {

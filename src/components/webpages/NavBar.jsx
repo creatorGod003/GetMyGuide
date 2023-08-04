@@ -1,53 +1,64 @@
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { setLoginPopUp } from "../../redux_store/features/stateControlSlice";
+import { setLoginPopUp, setSideBarShown } from "../../redux_store/features/stateControlSlice";
+import NavBarItem from "./NavBarItem";
 
 const NavBar = () => {
   const dispatch = useDispatch();
   const isUserLoggedIn = useSelector((state) => state.user.loggedin);
-  const userType = useSelector((state) => state.user.type);
+  const showSidebar = useSelector((state) => state.stateControl.sideBarShown);
+
+  function toggleSidebar() {
+    showSidebar ? dispatch(setSideBarShown(false)) : dispatch(setSideBarShown(true));
+  }
+
+  const vw = window.innerWidth;
 
   return (
     <nav className="flex flex-row items-center justify-between px-8 py-2 font-navbar text-md bg-white bg-opacity-10 ">
+      <div className="cursor-pointer md:hidden block mx-10" onClick={toggleSidebar}>
+        <svg
+          className="fill-current text-blue-600"
+          xmlns="http://www.w3.org/2000/svg"
+          width="20"
+          height="20"
+          viewBox="0 0 20 20"
+        >
+          <title>menu</title>
+          <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z"></path>
+        </svg>
+      </div>
+
       <ul className="flex flex-row items-center justify-evenly basis-1/4">
         <li>
-          <Link to={"/"} className="flex justify-evenly items-center font-bold text-lg">
+          <Link
+            to={"/"}
+            className="flex justify-evenly items-center font-bold"
+          >
             <img
               src={"/src/assets/brandlogo.png"}
               className="w-24 h-24 rounded-full"
               alt=""
             />
-            <span>GetMyGuide</span>
+            <span className="text-sm md:text-xl lg:text-lg">GetMyGuide</span>
           </Link>
         </li>
       </ul>
-      <ul className="flex flex-row items-center justify-evenly basis-2/4">
-        <li>
-          <Link to={"/"}>Home</Link>
-        </li>
-        <li>
-          <Link to={"/about"}>About</Link>
-        </li>
-        <li>
-          <Link to={"/contact"}>Contact Us</Link>
-        </li>
-        {
-          userType === "guide"?
-          (
-            <li>
-          <Link to={"/find"}>My Allotment</Link>
-        </li>
+      
+      {
+
+          (vw>768)?(
+            <NavBarItem/>
           ):
-          (
-            <li>
-          <Link to={"/find"}>Find My Guide</Link>
-        </li>
-          )
-        }
-      </ul>
+            showSidebar?(
+              <NavBarItem className="flex flex-col items-center justify-evenly basis-1/4 absolute top-0 left-0 h-[50vh] w-1/2 bg-white bg-opacity-90 z-20" isSideBar={true}/>
+            ):null
+      }
 
       <ul className="flex flex-row items-center justify-evenly basis-1/5">
-        <li>
+      {
+        (vw>768)?(
+          <li>
           {isUserLoggedIn ? (
             <div className="flex">
               <svg
@@ -68,7 +79,6 @@ const NavBar = () => {
             </div>
           ) : (
             <button
-              className="border-2 border-black"
               onClick={() => {
                 dispatch(setLoginPopUp(true));
               }}
@@ -77,6 +87,8 @@ const NavBar = () => {
             </button>
           )}
         </li>
+        ):null
+      }
       </ul>
     </nav>
   );

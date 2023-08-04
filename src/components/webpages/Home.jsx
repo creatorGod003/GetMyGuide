@@ -12,10 +12,101 @@ import Review from "../UIComponent/Review";
 import { setFeedbackPopUp } from "../../redux_store/features/stateControlSlice";
 import { useDispatch } from "react-redux";
 
+// onst title = props.title;
+//     const description = props.description;
+//     const rating = props.rating;
+//     const price = props.price;
+
 const Home = () => {
   const vw = window.innerWidth;
   const numberOfSlides = vw > 1024 ? 3.2 : vw > 768 ? 2.2 : 1.5;
   const dispatch = useDispatch();
+  const temple_destination = [
+    {
+      title: "Konark Sun Temple",
+      description:"Konark Sun Temple is a 13th-century CE Sun temple at Konark about 35 kilometres northeast from Puri on the coastline of Odisha, India. The temple is attributed to king Narasimhadeva I of the Eastern Ganga Dynasty about 1250 CE.",
+      rating: 4.5,
+      price: 1000,
+    },
+    {
+      title: "Jagannath Temple",
+      description:"The Jagannath Temple of Puri is a sacred Vaishnava temple dedicated to Lord Jagannath and located on the eastern coast of India, at Puri in the state of Odisha.",
+      rating: 4.5,
+      price: 1000,
+    },
+    {
+      title: "Lingaraja Temple",
+      description:"Lingaraja Temple is a Hindu temple dedicated to Shiva and is one of the oldest temples in Bhubaneswar, the capital of the Indian state of Odisha. The temple is the most prominent landmark of the Bhubaneswar city and one of the major tourist attractions of the state.",
+      rating: 4.5,
+      price: 1000,
+    },
+    {
+      title: "Rajarani Temple",
+      description:", Rajarani temple is a perfect symphony of skillful planning, symmetry of form and exquisite craftsmanship. No wonder it is hailed as a masterpiece of Odisha Temple Architecture.",
+      rating: 4.5,
+      price: 1000,
+    }
+  ]
+
+  const nature_destination = [
+    {
+      title: "Chilika Lake",
+      description:"Chilika Lake is a brackish water lagoon, spread over the Puri, Khurda and Ganjam districts of Odisha state on the east coast of India, at the mouth of the Daya River, flowing into the Bay of Bengal, covering an area of over 1,100 km2.",
+      rating: 4.5,
+      price: 1000,
+    },
+    {
+      title: "Nandankanan Zoological Park",
+      description:"Nandankanan Zoological Park is a 437-hectare zoo and botanical garden in Bhubaneswar, Odisha, India. Established in 1960, it was opened to the public in 1979 and became the first zoo in India to join World Association of Zoos and Aquariums in 2009.",
+      rating: 4.5,
+      price: 1000,
+    },
+    {
+      title: "Simlipal National Park",
+      description:"Located in the state of Odisha, India, Simlipal National Park is a stunning natural reserve known for its rich biodiversity and lush landscapes",
+      rating: 4.5,
+      price: 1000,
+    },
+    {
+      title: "Bhitarkanika National Park",
+      description:"Situated in the coastal region of Odisha, Bhitarkanika National Park is a unique wetland ecosystem and one of the largest mangrove forests in India. ",
+      rating: 4.5,
+      price: 1000,
+    },
+    {
+      title: "Nalabana Bird Sanctuary",
+      description:"Located within Chilika Lake, the largest brackish water lagoon in India, Nalabana Bird Sanctuary is a vital habitat for migratory birds.",
+      rating: 4.5,
+      price: 1000,
+    }
+  ]
+
+  const historical_destination = [
+    {
+      title: "Udayagiri and Khandagiri Caves",
+      description:"Udayagiri and Khandagiri Caves are partly natural and partly artificial caves of archaeological, historical and religious importance near the city of Bhubaneswar in Odisha, India.",
+      rating: 4.5,
+      price: 1000,
+    },
+    {
+      title: "Dhauli Giri Hills",
+      description:"The site holds immense significance in Buddhist history as it is believed to be the location where Emperor Ashoka, after witnessing the devastation caused by the Kalinga War, renounced violence and embraced Buddhism",
+      rating: 4.5,
+      price: 1000,
+    },
+    {
+      title: "Ratnagiri Buddhist Excavation",
+      description:"The excavation at Ratnagiri has revealed a significant Buddhist monastic complex dating back to the 6th century CE, which was an important center of learning and religious activities during the Mahayana and Vajrayana periods",
+      rating: 4.5,
+      price: 1000,
+    },
+    {
+      title: "Ratnagiri Buddhist Excavation",
+      description:"The excavation at Ratnagiri has revealed a significant Buddhist monastic complex dating back to the 6th century CE, which was an important center of learning and religious activities during the Mahayana and Vajrayana periods",
+      rating: 4.5,
+      price: 1000,
+    },
+  ]
 
   return (
     <div>
@@ -53,25 +144,14 @@ const Home = () => {
           modules={[FreeMode, Pagination]}
           className="w-full bg-red-600/20 h-full"
         >
-          <SwiperSlide className="">
-            <Card />
-          </SwiperSlide>
-
-          <SwiperSlide className="">
-            <Card />
-          </SwiperSlide>
-
-          <SwiperSlide className="">
-            <Card />
-          </SwiperSlide>
-
-          <SwiperSlide className="">
-            <Card />
-          </SwiperSlide>
           
-          <SwiperSlide className="">
-            <Card />
-          </SwiperSlide>
+          {
+            nature_destination.map((destination, index) => (
+              <SwiperSlide className="" key={index}>
+                <Card title={destination.title} description={destination.description} rating={destination.rating} price={destination.price} />
+              </SwiperSlide>
+            ))
+          }
 
         </Swiper>
       </section>
@@ -91,25 +171,15 @@ const Home = () => {
           modules={[FreeMode, Pagination]}
           className="w-full bg-red-600/20 h-full"
         >
-          <SwiperSlide className="">
-            <Card />
-          </SwiperSlide>
+          
+          {
+            temple_destination.map((destination, index) => (
+              <SwiperSlide className="" key={index}>
+                <Card title={destination.title} description={destination.description} rating={destination.rating} price={destination.price} />
+              </SwiperSlide>
+            ))
+          }
 
-          <SwiperSlide className="">
-            <Card />
-          </SwiperSlide>
-
-          <SwiperSlide className="">
-            <Card />
-          </SwiperSlide>
-
-          <SwiperSlide className="">
-            <Card />
-          </SwiperSlide>
-
-          <SwiperSlide className="">
-            <Card />
-          </SwiperSlide>
         </Swiper>
       </section>
 
@@ -128,25 +198,13 @@ const Home = () => {
           modules={[FreeMode, Pagination]}
           className="w-full bg-red-600/20 h-full"
         >
-          <SwiperSlide className="">
-            <Card />
-          </SwiperSlide>
-
-          <SwiperSlide className="">
-            <Card />
-          </SwiperSlide>
-
-          <SwiperSlide className="">
-            <Card />
-          </SwiperSlide>
-
-          <SwiperSlide className="">
-            <Card />
-          </SwiperSlide>
-
-          <SwiperSlide className="">
-            <Card />
-          </SwiperSlide>
+          {
+            nature_destination.map((destination, index) => (
+              <SwiperSlide className="" key={index}>
+                <Card title={destination.title} description={destination.description} rating={destination.rating} price={destination.price} />
+              </SwiperSlide>
+            ))
+          }
         </Swiper>
       </section>
 
@@ -165,25 +223,13 @@ const Home = () => {
           modules={[FreeMode, Pagination]}
           className="w-full bg-red-600/20 h-full"
         >
-          <SwiperSlide className="">
-            <Card />
-          </SwiperSlide>
-
-          <SwiperSlide className="">
-            <Card />
-          </SwiperSlide>
-
-          <SwiperSlide className="">
-            <Card />
-          </SwiperSlide>
-
-          <SwiperSlide className="">
-            <Card />
-          </SwiperSlide>
-
-          <SwiperSlide className="">
-            <Card />
-          </SwiperSlide>
+          {
+            historical_destination.map((destination, index) => (
+              <SwiperSlide className="" key={index}>
+                <Card title={destination.title} description={destination.description} rating={destination.rating} price={destination.price} />
+              </SwiperSlide>
+            ))
+          }
           
         </Swiper>
       </section>

@@ -1,3 +1,6 @@
+
+import PropTypes from "prop-types";
+
 const SectionHeader = (props) => {
     // eslint-disable-next-line react/prop-types
     const name = props.name;
@@ -9,3 +12,7 @@ const SectionHeader = (props) => {
 };
 
 export default SectionHeader;
+
+SectionHeader.propTypes = {
+  name: PropTypes.string,
+};

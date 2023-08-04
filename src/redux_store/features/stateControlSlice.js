@@ -7,8 +7,10 @@ const stateControlSlice = createSlice(
             loginPopUp: false,
             signUpPopUp: false,
             feedbackPopUp: false,
+            sideBarShown: false,
         },
         reducers: {
+            
             setLoginPopUp: (state, action) => {
                 state.loginPopUp = action.payload;
                 console.log("login pop up -> "+state.loginPopUp);
@@ -22,12 +24,16 @@ const stateControlSlice = createSlice(
             setFeedbackPopUp: (state, action) => {
                 state.feedbackPopUp = action.payload;
                 console.log("feedback pop up -> "+state.feedbackPopUp);
+            },
+            setSideBarShown: (state, action) => {
+                state.sideBarShown = action.payload;
+                console.log("sidebar shown -> "+state.sideBarShown);
             }
 
         }
             
     });
 
-export const { setLoginPopUp,setSignUpPopUp,setFeedbackPopUp } = stateControlSlice.actions;
+export const { setLoginPopUp,setSignUpPopUp,setFeedbackPopUp,setSideBarShown } = stateControlSlice.actions;
 export default stateControlSlice.reducer;
 

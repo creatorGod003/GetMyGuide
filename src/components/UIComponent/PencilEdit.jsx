@@ -1,4 +1,5 @@
-// eslint-disable-next-line react/prop-types
+import { PropTypes } from "prop-types";
+
 const PencilEdit = ({top,left,bottom,right,color,extra}) => {
   return (
     <button className={`p-2 bg-${color} rounded-full absolute top-${top} left-${left} bottom-${bottom} right-${right} ${extra} `}>
@@ -39,3 +40,12 @@ const PencilEdit = ({top,left,bottom,right,color,extra}) => {
 };
 
 export default PencilEdit;
+
+PencilEdit.propTypes = {
+  top: PropTypes.string,
+  left: PropTypes.string,
+  bottom: PropTypes.string,
+  right: PropTypes.string,
+  color: PropTypes.string,
+  extra: PropTypes.string,
+};

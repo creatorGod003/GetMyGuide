@@ -1,11 +1,11 @@
 import { useRef } from "react";
 import StarRating from "./StarRating";
 
-// eslint-disable-next-line react/prop-types
+import PropTypes from "prop-types";
 const ReadableField = ({ data, name, type }) => {
-  // eslint-disable-next-line react/prop-types
+  
   const country_code = data.country_code;
-  // eslint-disable-next-line react/prop-types
+  
   const datavalue = data.data;
 
   const element = useRef(null);
@@ -41,7 +41,6 @@ const ReadableField = ({ data, name, type }) => {
         <div className="flex flex-row flex-wrap">
           {
             Array.isArray(datavalue)
-            // eslint-disable-next-line react/prop-types
               ? datavalue.map((item, index) => {
                   return (
                     <div
@@ -88,3 +87,9 @@ break;
 };
 
 export default ReadableField;
+
+ReadableField.propTypes = {
+  data: PropTypes.object,
+  name: PropTypes.string,
+  type: PropTypes.string, 
+}

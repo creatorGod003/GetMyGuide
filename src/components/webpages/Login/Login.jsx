@@ -37,7 +37,7 @@ const Login = () => {
         ) : (
           <div>
             <button
-              className="block bg-blue-700 text-white m-4 text-center p-2 shadow-2xl rounded-md"
+              className="block bg-blue-700 text-white m-4 text-center p-2 shadow-2xl rounded-md w-fit mx-auto"
               onClick={() => {
                 console.log('clicked')
                 setEmailLoginPopUp(true);
@@ -46,14 +46,6 @@ const Login = () => {
               Login with Email
             </button>
 
-            <button
-              className="block bg-blue-700 text-white m-4 text-center p-2 shadow-2xl rounded-md"
-              onClick={() => {
-                setPhoneLoginPopUp(true);
-              }}
-            >
-              Login with Phone Number
-            </button>
           </div>
         )}
         <div className="text-center">
