@@ -36,7 +36,7 @@ const NavBar = () => {
             className="flex justify-evenly items-center font-bold"
           >
             <img
-              src={"/src/assets/brandlogo.png"}
+              src={"/public/assets/brandlogo.png"}
               className="w-24 h-24 rounded-full"
               alt=""
             />

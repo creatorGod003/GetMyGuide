@@ -20,7 +20,7 @@ const Card = (props) => {
 
   return (
     
-    <div className="max-w-sm rounded overflow-hidden shadow-lg m-4" key={key} >
+    <div className="max-w-sm rounded overflow-hidden shadow-lg m-4" key = {key}>
       <img 
         className="w-full h-56 hover:scale-105 transition-all duration-300"
         src={"https://tailwindcss.com/img/card-top.jpg"}
@@ -28,7 +28,7 @@ const Card = (props) => {
       />
       <div className="px-6 py-2">
         <div className="font-bold text-xl mb-2">{title}</div>
-        <di className="text-gray-700 text-base">
+        <div className="text-gray-700 text-base">
           {
             moreClicked?
             (
@@ -53,7 +53,7 @@ const Card = (props) => {
             )
 
           }
-        </di>
+        </div>
         <StarRating rating={rating} width={"20px"}/>
         <p>
             <span className="font-bold">Price: </span>
@@ -74,7 +74,7 @@ Card.defaultProps = {
   description: "Description",
   rating: 0,
   price: 0,
-  key: "0",
+  key: "",
   // image: "",
   // id: "",
 };

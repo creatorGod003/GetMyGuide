@@ -12,11 +12,6 @@ import Review from "../UIComponent/Review";
 import { setFeedbackPopUp } from "../../redux_store/features/stateControlSlice";
 import { useDispatch } from "react-redux";
 
-// onst title = props.title;
-//     const description = props.description;
-//     const rating = props.rating;
-//     const price = props.price;
-
 const Home = () => {
   const vw = window.innerWidth;
   const numberOfSlides = vw > 1024 ? 3.2 : vw > 768 ? 2.2 : 1.5;
@@ -114,7 +109,7 @@ const Home = () => {
         <div
           className="w-full h-[80vh]"
           style={{
-            backgroundImage: "url('/src/assets/hero-img3.jpg')",
+            backgroundImage: "url('/public/assets/hero-img3.jpg')",
             backgroundSize: "cover",
             backgroundPosition: "center center",
           }}

@@ -115,7 +115,7 @@ const FindMyGuide = () => {
       <div
         className=""
         style={{
-          backgroundImage: "url(/src/assets/hero-img2.jpeg)",
+          backgroundImage: "url(/public/assets/hero-img2.jpeg)",
           height: "80vh",
           backgroundRepeat: "no-repeat",
           backgroundSize: "cover",
@@ -125,7 +125,7 @@ const FindMyGuide = () => {
         <div className="absolute left-1/2 translate-x-[-50%] bottom-1/3 md:bottom-1/4 w-full p-2 sm:w-3/4 md:w-1/2 lg:w-2/5">
           <form className="flex justify-around items-center bg-white rounded-full p-2 md:p-4 shadow-md shadow-slate-700">
             <img
-              src={"/src/assets/search.svg"}
+              src={"/public/assets/search.svg"}
               alt=""
               className="w-8 h-8 basis-6"
             />
@@ -174,7 +174,7 @@ const FindMyGuide = () => {
                   >
                     <div>
                       <img
-                        src={"/src/assets/location.svg"}
+                        src={"/public/assets/location.svg"}
                         alt=""
                         className="w-8 h-8 mx-4"
                       />
@@ -220,8 +220,6 @@ const FindMyGuide = () => {
 
         </Swiper>
       </section> */}
-      
-
 
       <section className="lg:mx-20 md:mx-10 mx-5 my-10 md:my-16 text-md md:text-lg lg:text-xl">
         <header className="font-bold text-3xl text-center sm:text-left my-10">
@@ -232,7 +230,7 @@ const FindMyGuide = () => {
           {lovedDestination.map((item, index) => {
             return (
               <Card
-                key={"$" + index}
+                key={"$"+index}
                 title={item.place}
                 description={item.description}
                 rating={item.rating}

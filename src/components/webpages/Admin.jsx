@@ -7,7 +7,7 @@ const Admin = () => {
         <section className=" p-4 lg:mx-20 md:mx-10 mx-5 my-5 sm:my-10 md:my-16 text-md md:text-lg lg:text-xl flex flex-col items-center sm:flex-row sm:justify-around lg:justify-center">
 
             <div className="inline-block">
-                <img src="/src/assets/admin.png" alt="" className="w-40 h-40"/>
+                <img src="/public/assets/admin.png" alt="" className="w-40 h-40"/>
             </div>
 
             <header className="font-bold text-4xl my-10 font-cursiveheader">

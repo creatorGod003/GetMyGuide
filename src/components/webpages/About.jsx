@@ -8,7 +8,7 @@ const About = () => {
         <div
           className="w-full h-[80vh]"
           style={{
-            backgroundImage: "url('/src/assets/hero-img4.jpg')",
+            backgroundImage: "url('/public/assets/hero-img4.jpg')",
             backgroundSize: "cover",
             backgroundPosition: "center center",
           }}
@@ -42,10 +42,10 @@ const About = () => {
 
         <div
           className="lg:grid grid-cols-2 grid-rows-5 my-10 grid-flow-col p-2 sm:p-4 md:p-8 rounded-lg"
-          style={{ backgroundImage: "url('/src/assets/rainbow-vortex.svg')" }}
+          style={{ backgroundImage: "url('/public/assets/rainbow-vortex.svg')" }}
         >
           <p className="text-white py-2 pl-4 flex flex-col justify-evenly text-left col-start-1 col-end-2 m-4 border-4 border-r-red-600 border-y-red-600 border-l-white rounded shadow-slate-600 shadow-sm">
-            <h1 className="block font-semibold my-1">Handpicked Guides</h1>
+            <span className="block font-semibold my-1">Handpicked Guides</span>
             <span className="text-sm md:text-md lg:text-xl">
               We curate a network of highly skilled and verified guides who are
               not only experts in their fields but also passionate storytellers
@@ -54,9 +54,9 @@ const About = () => {
           </p>
 
           <p className="text-white py-2 pl-4 flex flex-col justify-evenly text-left col-start-2  col-end-3 row-start-2 row-end-3 m-4 border-4 border-l-blue-600 border-y-blue-600 border-r-white rounded shadow-slate-600 shadow-sm">
-            <h1 className="block font-semibold my-1">
+            <span className="block font-semibold my-1">
               Easy Booking and Secure Payments
-            </h1>
+            </span>
             <span className="text-sm md:text-md lg:text-xl">
               Our user-friendly platform allows you to browse, compare, and book
               tours effortlessly. We prioritize your safety and security,
@@ -65,7 +65,7 @@ const About = () => {
           </p>
 
           <p className="text-white py-2 pl-4 flex flex-col justify-evenly text-left col-start-1 col-end-2 row-start-3 row-end-4 m-4 border-4 border-r-red-600 border-y-red-600 border-l-white rounded shadow-slate-600 shadow-sm">
-            <h1 className="block font-semibold my-1">Service Across India</h1>
+            <span className="block font-semibold my-1">Service Across India</span>
             <span className="text-sm md:text-md lg:text-xl">
               From vibrant city excursions to secluded wilderness expeditions,
               Get My Guide offers coverage of destinations throughout India.
@@ -73,9 +73,9 @@ const About = () => {
               the ideal guide to accompany you on your journey.
             </span>
           </p>
-
+ 
           <p className="text-white py-2 pl-4 flex flex-col justify-evenly text-left col-start-2  col-end-3 row-start-4 row-end-5 m-4 border-4 border-l-blue-600 border-y-blue-600 border-r-white rounded shadow-slate-600 shadow-sm">
-            <h1 className="block font-semibold my-1">Supportive Community</h1>
+            <span className="block font-semibold my-1">Supportive Community</span>
             <span className="text-sm md:text-md lg:text-xl">
               We value every traveler and guide in our community. Our support
               team is available around the clock to assist you with any queries
@@ -84,7 +84,7 @@ const About = () => {
           </p>
 
           <p className="text-white py-2 pl-4 flex flex-col justify-evenly text-left col-start-1  col-end-2 row-start-5 row-end-6 m-4 border-4 border-r-red-600 border-y-red-600 border-l-white rounded shadow-slate-600 shadow-sm">
-            <h1 className="block font-semibold my-1">Tailored Experiences:</h1>
+            <span className="block font-semibold my-1">Tailored Experiences:</span>
             <span className="text-sm md:text-md lg:text-xl">
               We understand that each traveler is unique, and their interests
               and preferences may differ which is why we offers a diverse range
@@ -135,7 +135,7 @@ const About = () => {
             <a href="#">
               <img
                 className="rounded-lg sm:rounded-md sm:rounded-l-lg w-[200px] h-[300px] md:w-[300px] md:h-[400px]"
-                src="/src/assets/creator.png"
+                src="/public/assets/creator.png"
                 alt="Jese Avatar"
               />
             </a>
